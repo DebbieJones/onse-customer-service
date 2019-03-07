@@ -31,7 +31,9 @@ def assert_customer(context, expected_name):
     assert response.status_code == 200, response.status_code
     assert response.is_json
     body = response.get_json()
-    assert f"{body['firstName']} {body['surname']}" == expected_name
+    #print(body['firstName'])
+    name = f"{body['firstName']} {body['surname']}"
+    assert name == expected_name, f'{name} != {expected_name}'
 
 
 @then("I should get a not found response")
